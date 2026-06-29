@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Subscription | SubscriptionPro</title>
+
+    <link rel="stylesheet" href="cancel.css">
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        💎 SubscriptionPro
+    </div>
+
+    <nav>
+        <a href="plans.html">plan</a>
+        <a href="subscription.html">subscription</a>
+        <a href="logout.html">logout</a>
+
+    </nav>
+
+</header>
+
+<section class="cancel-section">
+
+    <div class="cancel-card">
+
+        <div class="warning-icon">
+            ⚠️
+        </div>
+
+        <h1>Cancel Subscription</h1>
+
+        <p class="subtitle">
+
+            We're sorry to see you go.
+            Before cancelling, please review the information below.
+
+        </p>
+
+        <div class="plan-box">
+
+            <h2>Current Plan</h2>
+
+            <div class="plan-details">
+
+                <div>
+                    <strong>Plan</strong>
+                    <p>Premium Monthly</p>
+                </div>
+
+                <div>
+                    <strong>Price</strong>
+                    <p>₹999 / Month</p>
+                </div>
+
+                <div>
+                    <strong>Renewal Date</strong>
+                    <p>30 July 2026</p>
+                </div>
+
+                <div>
+                    <strong>Status</strong>
+                    <p class="active">Active</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="benefits">
+
+            <h2>You Will Lose</h2>
+
+            <ul>
+
+                <li>❌ Premium Dashboard</li>
+
+                <li>❌ Unlimited Subscription Tracking</li>
+
+                <li>❌ Invoice Downloads</li>
+
+                <li>❌ Priority Customer Support</li>
+
+                <li>❌ Spending Analytics</li>
+
+                <li>❌ Renewal Notifications</li>
+
+            </ul>
+
+        </div>
+
+        <div class="reason">
+
+            <h2>Reason for Cancellation</h2>
+
+            <select id="cancelReason">
+
+                <option value="">Select Reason</option>
+
+                <option>Too Expensive</option>
+
+                <option>Found Another Service</option>
+
+                <option>Not Using the Platform</option>
+
+                <option>Technical Issues</option>
+
+                <option>Temporary Break</option>
+
+                <option>Other</option>
+
+            </select>
+
+            <textarea
+            id="feedback"
+            rows="5"
+            placeholder="Additional Feedback (Optional)">
+            </textarea>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="keep-btn"
+            onclick="location.href='dashboard.html'">
+
+                Keep Subscription
+
+            </button>
+
+            <button
+            class="cancel-btn"
+            onclick="cancelSubscription()">
+
+                Cancel Subscription
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="javascript.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Subscription Status | SubscriptionPro</title>
+
+<link rel="stylesheet" href="subscription.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+💎 SubscriptionPro
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="plans.html">Plans</a>
+<a href="payment.html">payment</a>
+<a href="profile.html">Profile</a>
+<a href="logout.html">Logout</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Subscription Status</h1>
+
+<p>Manage and monitor your current subscription plan.</p>
+
+</section>
+
+<div class="status-container">
+    <div class="status-card">
+
+        <div class="plan-badge">
+            PREMIUM PLAN
+        </div>
+
+        <h2>Premium Membership</h2>
+
+        <h1>₹999<span>/Month</span></h1>
+
+        <p class="active">
+            ● Active Subscription
+        </p>
+
+        <button class="upgrade-btn"
+                onclick="window.location.href='plans.html'">
+            Upgrade Plan
+        </button>
+
+    </div>
+    <div class="details-card">
+
+        <h2>Subscription Details</h2>
+
+        <div class="detail-row">
+            <span>Current Plan</span>
+            <strong>Premium</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Subscription ID</span>
+            <strong>SUB102458</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Start Date</span>
+            <strong>01 January 2026</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Renewal Date</span>
+            <strong>30 July 2026</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Days Remaining</span>
+            <strong id="daysRemaining">34 Days</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Billing Cycle</span>
+            <strong>Monthly</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Auto Renewal</span>
+            <label class="switch">
+                <input type="checkbox" checked id="renewToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="detail-row">
+            <span>Payment Method</span>
+            <strong>Visa Card •••• 4567</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Next Payment</span>
+            <strong>₹999</strong>
+        </div>
+
+        <div class="detail-row">
+            <span>Status</span>
+            <strong class="status-active">ACTIVE</strong>
+        </div>
+
+        <div class="button-group">
+
+            <button onclick="window.location.href='payment.html'">
+                Renew Now
+            </button>
+
+            <button onclick="window.location.href='billing.html'">
+                View Billing
+            </button>
+
+            <button onclick="window.location.href='plans.html'">
+                Change Plan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="usage">
+
+<h2>Subscription Progress</h2>
+
+<div class="progress-box">
+
+<p>Current Billing Cycle</p>
+
+<div class="progress-bar">
+
+<div class="progress-fill"></div>
+
+</div>
+
+<p>75% of current subscription period completed</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 SubscriptionPro | Premium Subscription Management
+
+</p>
+
+</footer>
+
+<script src="javascript.js"></script>
+
+</body>
+</html>
