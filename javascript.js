@@ -1,283 +1,129 @@
+document.getElementById("registerForm").addEventListener("submit", async function (e) {
 
-document.addEventListener("DOMContentLoaded", () => {
+    e.preventDefault();
 
-    console.log("SubscriptionPro Loaded");
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-    const currentPage = window.location.pathname.split("/").pop();
-
-    document.querySelectorAll("nav a").forEach(link => {
-
-        const href = link.getAttribute("href");
-
-        if (href === currentPage) {
-            link.classList.add("active");
-        }
-
-    });
-
-    const revealElements = document.querySelectorAll(
-        ".stat-card, .feature-box, .service-card, .chart-card, .why-grid div, .testimonial-card, .feature, .dashboard-card, .cta, .newsletter"
-    );
-
-    revealElements.forEach(element => {
-        element.classList.add("fade-up");
-    });
-
-    function revealOnScroll() {
-
-        const triggerBottom = window.innerHeight * 0.85;
-
-        revealElements.forEach(element => {
-
-            const top = element.getBoundingClientRect().top;
-
-            if (top < triggerBottom) {
-                element.classList.add("show");
-            }
-
-        });
-
+    if (password !== confirmPassword) {
+        alert("❌ Passwords do not match");
+        return;
     }
 
-    window.addEventListener("scroll", revealOnScroll);
+    const btn = document.querySelector("#registerForm button");
+    btn.innerHTML = "Creating Account...";
+    btn.disabled = true;
 
-    revealOnScroll();
+    try {
 
-    const counters = document.querySelectorAll(".stat-card h2");
+        const response = await fetch("http://localhost:5000/api/auth/register", {
 
-    counters.forEach(counter => {
+            method: "POST",
 
-        const original = counter.innerText;
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-        let target = parseInt(original.replace(/[^0-9]/g, ""));
-
-        if (isNaN(target)) return;
-
-        let current = 0;
-
-        const increment = Math.ceil(target / 80);
-
-        function updateCounter() {
-
-            current += increment;
-
-            if (current > target) current = target;
-
-            if (original.includes("%")) {
-                counter.innerText = current + "%";
-            }
-
-            else if (original.includes("₹")) {
-                counter.innerText = "₹" + current + "M+";
-            }
-
-            else if (original.includes("+")) {
-                counter.innerText = current + "+";
-            }
-
-            else {
-                counter.innerText = current;
-            }
-
-            if (current < target) {
-
-                requestAnimationFrame(updateCounter);
-
-            }
-
-        }
-
-        updateCounter();
-
-    });
-
-    const subscribeBtn = document.querySelector(".newsletter button");
-
-    if (subscribeBtn) {
-
-        subscribeBtn.addEventListener("click", () => {
-
-            const email =
-                document.querySelector(".newsletter input").value.trim();
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (email === "") {
-
-                alert("Please enter your email.");
-
-                return;
-
-            }
-
-            if (!emailPattern.test(email)) {
-
-                alert("Please enter a valid email address.");
-
-                return;
-
-            }
-
-            alert("🎉 Successfully subscribed!");
-
-            document.querySelector(".newsletter input").value = "";
+            body: JSON.stringify({
+                name,
+                email,
+                phone,
+                password
+            })
 
         });
 
-    }
+        const data = await response.json();
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        alert(data.message);
 
-        anchor.addEventListener("click", function(e){
-
-            e.preventDefault();
-
-            const target = document.querySelector(this.getAttribute("href"));
-
-            if(target){
-
-                target.scrollIntoView({
-
-                    behavior:"smooth"
-
-                });
-
-            }
-
-        });
-
-    });
-
-    const dashboard = document.querySelector(".dashboard-card");
-
-    if(dashboard){
-
-        dashboard.addEventListener("mousemove", function(e){
-
-            const rect = dashboard.getBoundingClientRect();
-
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            dashboard.style.background =
-            `radial-gradient(circle at ${x}px ${y}px,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.08))`;
-
-        });
-
-        dashboard.addEventListener("mouseleave", function(){
-
-            dashboard.style.background =
-            "rgba(255,255,255,.10)";
-
-        });
-
-    }
-
-    document.querySelectorAll(".btn-primary,.btn-secondary").forEach(button => {
-
-        button.addEventListener("click", function(e){
-
-            const ripple = document.createElement("span");
-
-            ripple.className = "ripple";
-
-            const rect = button.getBoundingClientRect();
-
-            ripple.style.left = (e.clientX - rect.left) + "px";
-            ripple.style.top = (e.clientY - rect.top) + "px";
-
-            button.appendChild(ripple);
-
-            setTimeout(()=>{
-
-                ripple.remove();
-
-            },600);
-
-        });
-
-    });
-
-});
-
-
-function toggleTheme() {
-    document.body.classList.toggle("dark");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const form = document.querySelector("form");
-
-    form.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-        const password =
-        document.querySelector('input[placeholder="Password"]').value;
-
-        const confirmPassword =
-        document.querySelector('input[placeholder="Confirm Password"]').value;
-
-        if(password !== confirmPassword){
-
-            alert("❌ Passwords do not match");
-            return;
-        }
-
-        const btn = document.querySelector("button");
-
-        btn.innerHTML = "Creating Account...";
-        btn.disabled = true;
-
-        setTimeout(() => {
-
-            alert("🎉 Account Created Successfully!");
-
+        if (response.ok) {
             window.location.href = "login.html";
+        }
 
-        }, 2000);
+    } catch (error) {
 
-    });
+        console.error(error);
+        alert("Server Error");
+
+    } finally {
+
+        btn.innerHTML = "Create Account";
+        btn.disabled = false;
+
+    }
 
 });
-
-
 
 
 /*login*/
-document.addEventListener("DOMContentLoaded", function () {
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
 
-    const form = document.querySelector("form");
+    e.preventDefault();
 
-    form.addEventListener("submit", function (e) {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-        e.preventDefault();
+    const btn = document.querySelector("#loginForm button");
 
-        const email =
-            document.querySelector('input[type="email"]').value;
+    btn.innerHTML = "Logging In...";
+    btn.disabled = true;
 
-        const password =
-            document.querySelector('input[type="password"]').value;
+    try {
 
-        if(email === "" || password === ""){
+        const response = await fetch("http://localhost:5000/api/auth/login", {
 
-            alert("Please enter Email and Password");
-            return;
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                email,
+                password
+            })
+
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+
+            alert(data.message);
+
+          
+            localStorage.setItem("token", data.token);
+
+            
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+        
+            window.location.href = "dashboard.html";
+
+        } else {
+
+            alert(data.message);
+
         }
 
-        alert("✅ Login Successful!");
+    } catch (error) {
 
-        window.location.href = "dashboard.html";
+        console.error(error);
 
-    });
+        alert("Server Error");
+
+    } finally {
+
+        btn.innerHTML = "Login";
+        btn.disabled = false;
+
+    }
 
 });
-
-
 /*payment*/
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -320,6 +166,23 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 /*dashboard*/
+const token = localStorage.getItem("token");
+
+if (!token) {
+
+    alert("Please login first!");
+
+    window.location.href = "login.html";
+
+}
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (user) {
+
+    document.getElementById("username").innerHTML =
+        `Welcome, ${user.name}`;
+
+}
 const targetDate =
 new Date("June 30, 2027 00:00:00").getTime();
 
@@ -348,6 +211,14 @@ alert("Logged Out Successfully!");
 window.location.href="login.html";
 
 });
+function logout() {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.location.href = "login.html";
+
+}
 
 
 /*upgrade*/
@@ -519,6 +390,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+const mongoose = require("mongoose");
+
+const planSchema = new mongoose.Schema({
+
+    planName: {
+        type: String,
+        required: true
+    },
+
+    price: {
+        type: Number,
+        required: true
+    },
+
+    duration: {
+        type: String,
+        required: true
+    },
+
+    features: {
+        type: [String],
+        required: true
+    }
+
+}, { timestamps: true });
+
+module.exports = mongoose.model("Plan", planSchema);
 
 /*payment*/
 

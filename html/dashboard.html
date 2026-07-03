@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SubscriptionPro Dashboard</title>
-<link rel="stylesheet" href="dash.css">
+<link rel="stylesheet" href="../css/dash.css">
 </head>
 <body>
 
@@ -22,6 +22,7 @@
 
 <section class="welcome-card">
     <div>
+        <h2 id="username"></h2>
         <h1>Welcome Back, Roshini 👋</h1>
         <p>Manage all your subscriptions from one smart dashboard.</p>
     </div>
@@ -109,6 +110,9 @@
         <div>💳 Payment Successful</div>
         <div>🔔 Renewal Reminder Sent</div>
     </div>
+     <button class="logout-btn" onclick="logout()">
+        Logout
+    </button>
 
 </section>
 <script src="javascript.js"></script>
