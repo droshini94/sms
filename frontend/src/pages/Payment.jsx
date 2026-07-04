@@ -1,200 +1,258 @@
+import { useState } from "react";
 import "../css/payment.css";
 
 function Payment() {
+
+  const [method, setMethod] = useState("card");
+  const [total, setTotal] = useState(1179);
+  const [coupon, setCoupon] = useState("");
+
+  const applyCoupon = () => {
+
+    if (coupon === "SAVE10") {
+      setTotal(1061);
+      alert("Coupon Applied Successfully!");
+    } else {
+      alert("Invalid Coupon");
+    }
+
+  };
+
+  const verifyUPI = () => {
+    alert("UPI Verified Successfully");
+  };
+
+  const handlePayment = (e) => {
+    e.preventDefault();
+
+    alert("Payment Successful!");
+
+  };
+
   return (
-    <>
-      <div className="logo">
-        💎 SubscriptionPro
-      </div>
 
-      <div className="container">
+<div className="payment-page">
 
-      
-        <div className="summary">
-          <h1>Premium Plan</h1>
+<div className="logo">
+💎 SubscriptionPro
+</div>
 
-          <p>Unlimited Features</p>
+<div className="container">
 
-          <div className="price">
-            ₹999 <span>/Month</span>
-          </div>
+<div className="summary">
 
-          <hr />
+<h1>Premium Plan</h1>
 
-          <div className="bill">
-            <p>Subscription</p>
-            <span>₹999</span>
-          </div>
+<p>Unlimited Features</p>
 
-          <div className="bill">
-            <p>GST (18%)</p>
-            <span>₹180</span>
-          </div>
+<div className="price">
+₹999<span>/Month</span>
+</div>
 
-          <div className="bill total">
-            <p>Total</p>
-            <span>₹1179</span>
-          </div>
+<hr />
 
-          <hr />
+<div className="bill">
+<p>Subscription</p>
+<span>₹999</span>
+</div>
 
-          <input
-            type="text"
-            placeholder="Coupon Code"
-            id="coupon"
-          />
+<div className="bill">
+<p>GST (18%)</p>
+<span>₹180</span>
+</div>
 
-          <button id="applyCoupon">
-            Apply Coupon
-          </button>
-        </div>
+<div className="bill total">
+<p>Total</p>
+<span>₹{total}</span>
+</div>
 
-     
-        <div className="payment">
+<hr />
 
-          <h2>Select Payment Method</h2>
+<input
+type="text"
+placeholder="Coupon Code"
+value={coupon}
+onChange={(e)=>setCoupon(e.target.value)}
+/>
 
-          <div className="payment-method">
+<button
+className="coupon-btn"
+onClick={applyCoupon}
+>
+Apply Coupon
+</button>
 
-            <label>
-              <input
-                type="radio"
-                name="method"
-                value="card"
-                defaultChecked
-              />
-              💳 Card
-            </label>
+</div>
 
-            <label>
-              <input
-                type="radio"
-                name="method"
-                value="upi"
-              />
-              📱 UPI
-            </label>
+<div className="payment">
 
-            <label>
-              <input
-                type="radio"
-                name="method"
-                value="bank"
-              />
-              🏦 Net Banking
-            </label>
+<h2>Select Payment Method</h2>
 
-          </div>
+<div className="payment-method">
 
-          <form id="paymentForm">
+<label>
 
-           
-            <div id="cardSection">
+<input
+type="radio"
+checked={method==="card"}
+onChange={()=>setMethod("card")}
+/>
 
-              <input
-                type="text"
-                placeholder="Card Holder Name"
-                id="holder"
-              />
+💳 Card
 
-              <input
-                type="text"
-                placeholder="Card Number"
-                maxLength="16"
-                id="cardNumber"
-              />
+</label>
 
-              <div className="row">
+<label>
 
-                <input
-                  type="text"
-                  placeholder="MM/YY"
-                  id="expiry"
-                />
+<input
+type="radio"
+checked={method==="upi"}
+onChange={()=>setMethod("upi")}
+/>
 
-                <input
-                  type="password"
-                  placeholder="CVV"
-                  maxLength="3"
-                  id="cvv"
-                />
+📱 UPI
 
-              </div>
+</label>
 
-            </div>
+<label>
 
-           
-            <div
-              id="upiSection"
-              style={{ display: "none" }}
-            >
-              <input
-                type="text"
-                placeholder="Enter UPI ID (example@ybl)"
-                id="upi"
-              />
+<input
+type="radio"
+checked={method==="bank"}
+onChange={()=>setMethod("bank")}
+/>
 
-              <button
-                type="button"
-                className="verify-btn"
-              >
-                Verify UPI
-              </button>
-            </div>
+🏦 Net Banking
 
-         
-            <div
-              id="bankSection"
-              style={{ display: "none" }}
-            >
-              <select id="bank">
-                <option>Select Bank</option>
-                <option>State Bank of India</option>
-                <option>HDFC Bank</option>
-                <option>ICICI Bank</option>
-                <option>Axis Bank</option>
-                <option>Indian Bank</option>
-                <option>Canara Bank</option>
-              </select>
+</label>
 
-              <input
-                type="text"
-                placeholder="Account Holder Name"
-                id="accHolder"
-              />
+</div>
 
-              <input
-                type="text"
-                placeholder="Account Number"
-                id="accNumber"
-              />
+<form onSubmit={handlePayment}>
 
-              <input
-                type="text"
-                placeholder="IFSC Code"
-                id="ifsc"
-              />
-            </div>
+{method==="card" && (
 
-            <button
-              type="submit"
-              className="pay-btn"
-            >
-              Pay Securely
-            </button>
+<div>
 
-          </form>
+<input
+type="text"
+placeholder="Card Holder Name"
+/>
 
-          <div className="security">
-            🔒 SSL Secured Payment
-            <br />
-            256-bit Encryption
-          </div>
+<input
+type="text"
+placeholder="Card Number"
+/>
 
-        </div>
+<div className="row">
 
-      </div>
-    </>
+<input
+type="text"
+placeholder="MM/YY"
+/>
+
+<input
+type="password"
+placeholder="CVV"
+/>
+
+</div>
+
+</div>
+
+)}
+
+{method==="upi" && (
+
+<div>
+
+<input
+type="text"
+placeholder="example@ybl"
+/>
+
+<button
+type="button"
+className="verify-btn"
+onClick={verifyUPI}
+>
+
+Verify UPI
+
+</button>
+
+</div>
+
+)}
+
+{method==="bank" && (
+
+<div>
+
+<select>
+
+<option>Select Bank</option>
+
+<option>State Bank of India</option>
+
+<option>HDFC Bank</option>
+
+<option>ICICI Bank</option>
+
+<option>Axis Bank</option>
+
+<option>Indian Bank</option>
+
+<option>Canara Bank</option>
+
+</select>
+
+<input
+type="text"
+placeholder="Account Holder Name"
+/>
+
+<input
+type="text"
+placeholder="Account Number"
+/>
+
+<input
+type="text"
+placeholder="IFSC Code"
+/>
+
+</div>
+
+)}
+
+<button
+type="submit"
+className="pay-btn"
+>
+
+Pay Securely
+
+</button>
+
+</form>
+
+<div className="security">
+
+🔒 SSL Secured Payment
+
+<br />
+
+256-bit Encryption
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
   );
 }
 

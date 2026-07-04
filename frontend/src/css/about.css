@@ -43,7 +43,7 @@ body{
 }
 
 .about-text h2{
-    color:#4f46e5;
+    color:black;
     margin-bottom:20px;
     font-size:35px;
 }
@@ -62,7 +62,7 @@ body{
 
 .about-features h2{
     text-align:center;
-    color:#4f46e5;
+    color:white;
     margin-bottom:45px;
     font-size:40px;
 }

@@ -1,6 +1,15 @@
 import "../css/plan.css";
+import { useNavigate } from "react-router-dom";
 
 function Plans() {
+
+  const navigate = useNavigate();
+
+  const choosePlan = (planName) => {
+    alert(`${planName} Plan Selected Successfully!`);
+    navigate("/payment");
+  };
+
   return (
     <div className="plan-container">
 
@@ -8,8 +17,12 @@ function Plans() {
 
       <div className="plan-grid">
 
+   
+
         <div className="plan-card">
+
           <h2>Basic</h2>
+
           <div className="price">₹499 / Month</div>
 
           <ul>
@@ -18,13 +31,21 @@ function Plans() {
             <li>✔ Basic Dashboard</li>
           </ul>
 
-          <button className="plan-btn">
+          <button
+            className="plan-btn"
+            onClick={() => choosePlan("Basic")}
+          >
             Choose Plan
           </button>
+
         </div>
 
+       
+
         <div className="plan-card popular">
+
           <h2>Premium</h2>
+
           <div className="price">₹999 / Month</div>
 
           <ul>
@@ -33,13 +54,21 @@ function Plans() {
             <li>✔ Analytics Dashboard</li>
           </ul>
 
-          <button className="plan-btn">
+          <button
+            className="plan-btn"
+            onClick={() => choosePlan("Premium")}
+          >
             Choose Plan
           </button>
+
         </div>
 
+       
+
         <div className="plan-card">
+
           <h2>Enterprise</h2>
+
           <div className="price">₹1999 / Month</div>
 
           <ul>
@@ -48,9 +77,13 @@ function Plans() {
             <li>✔ Premium Features</li>
           </ul>
 
-          <button className="plan-btn">
+          <button
+            className="plan-btn"
+            onClick={() => choosePlan("Enterprise")}
+          >
             Choose Plan
           </button>
+
         </div>
 
       </div>
