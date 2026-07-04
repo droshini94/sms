@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f7fc;
+}
+
+
+.about-hero{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed,#ec4899);
+    color:white;
+    text-align:center;
+    padding:90px 10%;
+}
+
+.about-hero h1{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.about-hero p{
+    max-width:850px;
+    margin:auto;
+    font-size:20px;
+    line-height:1.8;
+}
+
+
+
+.about-content{
+    padding:70px 10%;
+}
+
+.about-text{
+    background:white;
+    padding:45px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.about-text h2{
+    color:#4f46e5;
+    margin-bottom:20px;
+    font-size:35px;
+}
+
+.about-text p{
+    color:#555;
+    line-height:1.9;
+    font-size:18px;
+    margin-bottom:18px;
+}
+
+
+.about-features{
+    padding:70px 10%;
+}
+
+.about-features h2{
+    text-align:center;
+    color:#4f46e5;
+    margin-bottom:45px;
+    font-size:40px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.feature-card{
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+}
+
+.icon{
+    font-size:45px;
+    color:#4f46e5;
+    margin-bottom:18px;
+}
+
+.feature-card h3{
+    margin-bottom:12px;
+    color:#333;
+}
+
+.feature-card p{
+    color:#666;
+    line-height:1.6;
+}
+
+
+
+.mission{
+    margin:70px auto;
+    width:90%;
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    text-align:center;
+    padding:60px;
+    border-radius:20px;
+}
+
+.mission h2{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.mission p{
+    max-width:850px;
+    margin:auto;
+    font-size:19px;
+    line-height:1.8;
+}
+
+
+
+@media(max-width:768px){
+
+.about-hero h1{
+    font-size:38px;
+}
+
+.about-hero p{
+    font-size:17px;
+}
+
+.about-text{
+    padding:30px;
+}
+
+.about-text h2,
+.about-features h2,
+.mission h2{
+    font-size:30px;
+}
+
+}

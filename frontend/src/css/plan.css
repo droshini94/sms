@@ -1,0 +1,175 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+   
+     min-height:100vh;
+    padding:40px;
+     background:linear-gradient(135deg,#4f46e5,#7c3aed,#ec4899);
+}
+
+
+.plan-container{
+     background:linear-gradient(135deg,#4f46e5,#7c3aed,#ec4899);
+    min-height:100vh;
+    padding:60px 8%;
+}
+
+.plan-container h1{
+    text-align:center;
+    font-size:52px;
+    color:#fff;
+    margin-bottom:15px;
+    font-weight:700;
+}
+
+.plan-container p{
+    text-align:center;
+    color:#666;
+    font-size:20px;
+    margin-bottom:60px;
+}
+
+
+
+.plan-grid{
+    display:flex;
+    justify-content:center;
+    align-items:stretch;
+    gap:35px;
+    flex-wrap:wrap;
+}
+
+
+
+.plan-card{
+   background-color: #fff;
+    width:340px;
+    padding:40px 30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    transition:.4s;
+    position:relative;
+}
+
+.plan-card:hover{
+    transform:translateY(-10px);
+}
+
+.popular{
+    border:3px solid #4f46e5;
+}
+
+.popular::before{
+    content:"★ Most Popular";
+    position:absolute;
+    top:-18px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#4f46e5;
+    color:#fff;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+}
+
+
+
+.plan-icon{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#eef2ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0 auto 20px;
+    font-size:40px;
+}
+
+
+
+.plan-card h2{
+    color:#4f46e5;
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+
+
+.price{
+    font-size:42px;
+    font-weight:bold;
+    color:#111827;
+    margin-bottom:30px;
+}
+
+.price span{
+    font-size:20px;
+    color:#666;
+    font-weight:500;
+}
+
+
+
+.plan-card ul{
+    list-style:none;
+    margin:30px 0;
+    text-align:left;
+}
+
+.plan-card ul li{
+    padding:12px 0;
+    font-size:18px;
+    color:#555;
+}
+
+
+
+.plan-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#4f46e5,#6d28d9);
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.plan-btn:hover{
+    background:linear-gradient(135deg,#6d28d9,#4f46e5);
+    transform:scale(1.03);
+}
+
+
+
+@media(max-width:1100px){
+
+.plan-grid{
+    flex-direction:column;
+    align-items:center;
+}
+
+.plan-card{
+    width:90%;
+    max-width:380px;
+}
+
+.plan-container h1{
+    font-size:40px;
+}
+
+.price{
+    font-size:34px;
+}
+
+}
